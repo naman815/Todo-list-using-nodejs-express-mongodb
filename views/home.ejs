@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title> <%= title%></title>
+        <link rel="stylesheet" href="/css/home.css">
+    </head>
+    <body>
+        <div class="container">
+            <div id="heading">
+                <h2>TODO App</h2>
+            </div>
+            <form action="create-task" method="POST">
+                <div style="width: 100% ; border-bottom: 0.5px solid lightgray; min-height: 50px; padding: 10px; ">
+                    <span style="font-weight: bold;">DESCRIPTION</span><br>
+                    <input type="text" name="task"  placeholder="what do you need to do?" style="border: 0ch">
+                </div>
+                <div style="width: 100% ; border-bottom: 0.5px solid lightgray;padding: 10px;height: 50px;">
+                    <div id="category" style="border-right: 0.5px solid lightgray;"> 
+                        <span style="font-weight: bold;">CATEGORY</span><br>
+                        <select name="category" data-style="btn-info" >
+                            <option selected disabled>Choose a category</option>
+                            <option value="personal">Personal</option>
+                            <option value="work">Work</option>
+                            <option value="school">School</option>
+                            <option value="others">Others</option>
+                          </select>
+                    </div>
+                    <div id="due-date">
+                        <span style="font-weight: bold;">DUE DATE</span><br>
+                        <input type="date" name="date" >
+                    </div>
+                </div>
+
+                <button id="add-task" type="submit"><span style="color: white;">+ ADD TASK</span></button>
+                <button id="delete" ><a href=""><span style="color: white;">DELETE TASK</span></a></button>
+            </form>
+
+            <div id="task-list">
+                <% for(let i of task_list) { %>
+                    <div>
+                        <input type="checkbox">
+                         <%=i.task%>
+                         <%=i.date%>
+                         <%=i.category%>
+                    </div>
+               <% }%>
+            </div>
+            
+        </div>
+    </body>
+</html>
