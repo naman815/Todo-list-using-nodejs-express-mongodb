@@ -31,20 +31,23 @@
                 </div>
 
                 <button id="add-task" type="submit"><span style="color: white;">+ ADD TASK</span></button>
+          
+                
                 <button id="delete" ><a href=""><span style="color: white;">DELETE TASK</span></a></button>
             </form>
 
-            <div id="task-list">
+            <form id="task-list">
                 <% for(let i of task_list) { %>
                     <div>
-                        <input type="checkbox">
+                        
+                        <input type="checkbox" data-id="<%= i._id%>" class="list-items">
                          <%=i.task%>
                          <%=i.date%>
                          <%=i.category%>
                     </div>
                <% }%>
-            </div>
-            
+            </form>
+            <script type="text/javascript" src="/js/home.js"></script>
         </div>
     </body>
 </html>
