@@ -1,12 +1,26 @@
-var items = document.getElementsByClassName('list-items');
-var id;
-for(var i= 0; i<items.length;i++){
+function checkboxs(){
+    var items = document.querySelectorAll('.list-items:checked');
 
-    if(items[i].checked == true){
-        id = items.getAttribute('data-id');
-
+    var id=[];
+    for(var i= 0; i<items.length;i++){
+        id.push(items[i].getAttribute('data-id'));
     }
+
+    return id;
 
 }
 
-console.log(id);
+function deleteCalled(){
+    var delId = checkboxs();
+
+    $.ajax({
+        type: "POST",
+        data: delId,
+        url: "index.php",
+        success: function(msg){
+          $('.answer').html(msg);
+        }
+     });
+ /*   list ki values ko leke 
+    semd a post request to 
+/delete-route jo bnaega with the ids as parameters*/}

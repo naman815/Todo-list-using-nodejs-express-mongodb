@@ -6,6 +6,9 @@ const task = require('./models/task');
 
 const app = express();
 
+//use express router
+app.use('/',require('./routes'));
+
 var Task = [
     {
         task : "Lets make todo app",
@@ -19,36 +22,36 @@ app.set('views',path.join(__dirname,'views'));
 app.use(express.urlencoded());
 app.use(express.static('assets'));
 
-app.get('/',function(req,res){
-    task.find({/*find using condition like name: 'naman' */}, function(err, tasks){
-        if(err){
-            console.log('error in fetching db');
-            return;
-        }
+// app.get('/',function(req,res){
+//     task.find({/*find using condition like name: 'naman' */}, function(err, tasks){
+//         if(err){
+//             console.log('error in fetching db');
+//             return;
+//         }
 
-        return res.render('home',{title: "Todo App", task_list: tasks });
-    });
-});
+//         return res.render('home',{title: "Todo App", task_list: tasks });
+//     });
+// });
 
-app.post('/create-task', function(req,res){
+// app.post('/create-task', function(req,res){
     
-    task.create({
-        task : req.body.task,
-        date : req.body.date,
-        category : req.body.category
+//     task.create({
+//         task : req.body.task,
+//         date : req.body.date,
+//         category : req.body.category
          
         
-    },function(err, newTask){
-        if(err){
-            console.log('error in creating task');
-            return;
-        }
+//     },function(err, newTask){
+//         if(err){
+//             console.log('error in creating task');
+//             return;
+//         }
 
-        console.log('*******',newTask);
-        return res.redirect('back');
+//         console.log('*******',newTask);
+//         return res.redirect('back');
     
-    });
-});
+//     });
+// });
 
 app.listen(port,function(err){
     if(err){
