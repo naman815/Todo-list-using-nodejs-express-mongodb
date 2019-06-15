@@ -1,8 +1,10 @@
 body{
     background-color: grey;
     padding: 0%;
+    height: 100%;
     margin: 0%;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+    
 }
 
 .container{
@@ -53,8 +55,45 @@ body{
 
 #delete{
     width: 20%;
-    height: 40px;
+    height: 41px;
     background-color: red;
+    position: relative;
+    left: 48%;
+    margin-top: -3.5rem;
+}
+
+
+
+
+
+.category-container{
+    background-color: orange;
+    width: 12%;
+    height: 25px;
     display: inline-block;
-    margin-top: 2%;
+    border-radius: 0.4rem;
+    margin-left: 75%;
+    margin-top: -5%;
+    
+}
+
+
+.category-container span{
+    text-align: center;
+    color: white; 
+    position: relative;
+    /* left: 5%;
+    top: 8%; */
+
+}
+
+.category-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.task-date{
+    font-size: 11px;
+    color: gray;
 }

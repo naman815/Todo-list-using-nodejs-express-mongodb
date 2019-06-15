@@ -1,4 +1,6 @@
-const mongoose = require('mongoose');
+// schema for database 
+
+const mongoose = require('mongoose'); // accessing mongoose
 
 const taskSchema = new mongoose.Schema({
     task :{

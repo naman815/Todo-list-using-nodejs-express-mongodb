@@ -1,27 +1,32 @@
 <html>
     <head>
         <title> <%= title%></title>
-        <link rel="stylesheet" href="/css/home.css">
+         <link rel="stylesheet" href="/css/home.css"> <!-- including css file -->
+
+          <!-- including fontawesome cdn -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     </head>
     <body>
         <div class="container">
             <div id="heading">
                 <h2>TODO App</h2>
             </div>
-            <form action="create-task" method="POST">
+
+             <!-- form to create task -->
+            <form action="/create-task" method="POST">
                 <div style="width: 100% ; border-bottom: 0.5px solid lightgray; min-height: 50px; padding: 10px; ">
                     <span style="font-weight: bold;">DESCRIPTION</span><br>
-                    <input type="text" name="task"  placeholder="what do you need to do?" style="border: 0ch">
+                    <input type="text" name="task"  placeholder="what do you need to do?" style="border: 0ch; width: 90%;">
                 </div>
                 <div style="width: 100% ; border-bottom: 0.5px solid lightgray;padding: 10px;height: 50px;">
                     <div id="category" style="border-right: 0.5px solid lightgray;"> 
                         <span style="font-weight: bold;">CATEGORY</span><br>
                         <select name="category" data-style="btn-info" >
                             <option selected disabled>Choose a category</option>
-                            <option value="personal">Personal</option>
-                            <option value="work">Work</option>
-                            <option value="school">School</option>
-                            <option value="others">Others</option>
+                            <option value="PERSONAL">Personal</option>
+                            <option value="WORK">Work</option>
+                            <option value="SCHOOL">School</option>
+                            <option value="OTHERS">Others</option>
                           </select>
                     </div>
                     <div id="due-date">
@@ -33,20 +38,38 @@
                 <button id="add-task" type="submit"><span style="color: white;">+ ADD TASK</span></button>
           
                 
-                <button id="delete" onclick=deleteCalled()><span style="color: white;">DELETE TASK</span></a></button>
+                
             </form>
 
-            <form id="task-list">
+            <!-- form to delete task -->
+            <form id="task-list" action="/taskList" method="POST">
+                <button id="delete" type="submit"><span style="color: white;">DELETE TASK</span></a></button>
                 <% for(let i of task_list) { %>
-                    <div>
+                    <div style="width: 90%; border-top: 1px solid lightgray; height: 10%; margin-left: 5% " >
                         
-                        <input type="checkbox" data-id="<%= i._id%>" class="list-items">
-                         <%=i.task%>
-                         <%=i.date%>
-                         <%=i.category%>
+                        <div style="margin-top: 2%;">
+                            <input type="checkbox" name="task" value="<%= i._id%>" class="list-items" style="display: inline-block;">
+                         
+                            <div style="display: inline-block;">
+                                <div>
+                                    <%=i.task%>
+                                </div>
+                                <div >
+                                    <span class="task-date">
+                                        <i class="far fa-calendar-alt"></i>
+                                        <%= i.date.toDateString()%>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="category-container">  
+                            <span class="task-category"> <%=i.category%></span>
+                        </div>
                     </div>
                <% }%>
             </form>
+
+            <!--including javascript file -->
             <script type="text/javascript" src="/js/home.js"></script>
         </div>
     </body>
